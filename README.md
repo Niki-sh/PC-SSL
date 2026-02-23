@@ -11,7 +11,7 @@ The project implements predictive coding models that learn to predict future EEG
 - **Predictive Coding Framework**: Models learn to predict future EEG from past segments
 - **Attention Mechanisms**: Band and channel attention for improved feature learning
 - **Multiple Architectures**: CNN-based models with attention mechanisms
-- **Cross-validation**: Trial-based and session-based 3-fold cross-validation
+- **Cross-validation**: Trial-based 3-fold cross-validation
 - **SEED V & IV Compatible**: Designed for SEED V dataset, with similar approaches used for SEED IV
 
 ## Datasets
@@ -56,7 +56,6 @@ The project implements predictive coding models that learn to predict future EEG
 ├── models/                      # Trained model checkpoints
 ├── logs/                        # Training logs
 ├── requirements.txt
-├── setup.py
 └── README.md
 ```
 
@@ -116,10 +115,12 @@ The main model (`CNNPredictiveCodingDE_Attn`) consists of:
 
 ## Cross-Validation
 
-Two cross-validation strategies are implemented:
+This project uses **trial-based 3-fold cross-validation**:
 
-1. **Trial-based 3-fold**: Splits trials within each session
-2. **Session-based 3-fold**: Uses entire sessions for validation
+- Splits trials within each session for training and validation
+- Ensures robust evaluation across different trial combinations
+- Prevents overfitting to specific trial patterns
+- Maintains temporal consistency within each trial
 
 ## Results
 
@@ -136,20 +137,9 @@ The same methodology has been successfully applied to the SEED IV dataset with m
 If you use this code in your research, please cite:
 
 ```
-[Add your citation here]
+PC-SSL: A PREDICTIVE CODING-BASED SELF-SUPERVISED LEARNING FRAMEWORK FOR EEG EMOTION RECOGNITION
 ```
 
 ## License
 
-[Add your license information here]
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
-## Contact
-
-[Add your contact information here]
+This project is licensed under the MIT License - see the LICENSE file for details.
