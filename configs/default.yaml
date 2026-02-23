@@ -1,0 +1,66 @@
+# Data Configuration
+data:
+  raw_data_dir: "data/raw"
+  processed_data_dir: "data/processed"
+  splits_dir: "data/splits"
+  eeg_channels: 62
+  frequency_bands: 5
+  emotions: 5
+  subjects: 16
+  sessions: 3
+  trials_per_session: 15
+
+# Model Configuration
+model:
+  type: "cnn_predictive_coding"
+  attention:
+    band_attention: true
+    channel_attention: true
+  encoder:
+    conv_layers: [16, 32]
+    kernel_size: 3
+    activation: "leaky_relu"
+    pooling: "max"
+  bottleneck:
+    channels: 64
+    kernel_size: 3
+  decoder:
+    conv_layers: [32, 16, 1]
+    kernel_size: [2, 1]
+    upsampling: "bilinear"
+
+# Training Configuration
+training:
+  epochs: 30
+  batch_size: 256
+  learning_rate: 5e-4
+  weight_decay: 1e-5
+  max_grad_norm: 5.0
+  optimizer: "adam"
+  loss_function: "mse"
+  device: "auto"  # auto, cpu, cuda
+  save_best_model: true
+  save_every_n_epochs: 5
+  
+# Cross-validation Configuration
+cross_validation:
+  strategy: "trial"  # trial, session
+  folds: 3
+  trial_folds: [[0,1,2,3,4], [5,6,7,8,9], [10,11,12,13,14]]
+  session_folds: [0, 1, 2]
+
+# Logging Configuration
+logging:
+  log_dir: "logs"
+  tensorboard: true
+  print_every: 10
+  save_every: 5
+
+# Paths Configuration
+paths:
+  model_save_dir: "models"
+  data_dir: "/home/rml/Niki/SEED V/EEG_DE_features"
+  output_dir: "/home/rml/Niki/SEED V/DE"
+
+# Reproducibility
+seed: 42
