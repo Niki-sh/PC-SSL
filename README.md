@@ -14,7 +14,7 @@ The project implements predictive coding models that learn to predict future EEG
 - **Cross-validation**: Trial-based and session-based 3-fold cross-validation
 - **SEED V & IV Compatible**: Designed for SEED V dataset, with similar approaches used for SEED IV
 
-## Dataset
+## Datasets
 
 - **SEED V**: 16 subjects, 3 sessions per subject, 15 trials per session
 - **EEG Features**: Differential Entropy (DE) features, 62 channels, 5 frequency bands
